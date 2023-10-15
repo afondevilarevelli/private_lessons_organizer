@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.views import View
 
 
-class LoginView(View):
+class SignUpView(View):
     def get(self, request):
         if request.user.is_authenticated:
             return render(request, 'home')

@@ -9,17 +9,19 @@
     <title>
       {% block title %}
         Lessons ORG
-      {% endblock %}
+      {% endblock title %}
     </title>
 
     {% comment %} Bootstrap CSS {% endcomment %}
     <link href="{% static 'bootstrap_v_5_3_2/bootstrap.min.css' %}" rel="stylesheet">
   </head>
   <body>
-    <div id="content">
-      {% include "components/logo.html" %}
+    <div class="d-flex flex-column min-vh-100">
+      {% include "layout/header.html" %}
 
-      {% block content %}{% endblock %}
+      <div class="flex-grow-1 m-3">
+        {% block content %}{% endblock content %}
+      </div>
     </div>
 
     {% comment %} Bootstrap JS {% endcomment %}
