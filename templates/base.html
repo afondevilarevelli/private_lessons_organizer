@@ -21,6 +21,8 @@
 
       <div class="flex-grow-1 m-3">
         {% block content %}{% endblock content %}
+
+        {% include "layout/flash_messages.html" %}
       </div>
     </div>
 

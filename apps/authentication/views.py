@@ -2,21 +2,28 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login
 from django.views import View
+from django.contrib import messages
+from apps.authentication.forms import RegisterForm
 
 
 class SignUpView(View):
-    def get(self, request):
-        if request.user.is_authenticated:
-            return render(request, 'home')
-        return render(request, 'authentication/login.html')
+    form_class = RegisterForm
+    initial = {'key': 'value'}
+    template_name = 'authentication/signup.html'
 
-    def post(self, request):
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect(request, 'home')
-        else:
-            # Return an 'invalid login' error message.
-            pass
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}')
+
+            return redirect(to='/')
+
+        return render(request, self.template_name, {'form': form})
