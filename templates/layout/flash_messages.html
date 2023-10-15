@@ -1,7 +1,26 @@
 {% if messages %}
 <ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        {% for message in messages %}
+
+        <div id="liveToast{{ forloop.counter }}" 
+        class="toast align-items-center text-bg-{% if message.tags == 'info' %}primary{% elif message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} border-0" 
+        role="alert" 
+        aria-live="assertive" 
+        aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body">
+                {{ message }}
+              </div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+          </div>
+          <script>
+            bootstrap.Toast.getOrCreateInstance(
+                document.getElementById("liveToast{{ forloop.counter }}")
+            ).show()
+            </script>
+        {% endfor %}
+      </div>     
 </ul>
 {% endif %}
