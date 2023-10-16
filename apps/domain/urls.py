@@ -4,5 +4,5 @@ import apps.domain.views.home_views as home_views
 
 urlpatterns = [
     path("", home_views.home, name='home'),
-    path("dashboard", home_views.home, name='dashboard'),
+    path("dashboard", home_views.dashboard, name='dashboard'),
 ]

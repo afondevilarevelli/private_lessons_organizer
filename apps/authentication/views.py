@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib import messages
 from apps.authentication.forms.signup_form import SignUpForm
+from django.contrib.auth import login
 
 
 class SignUpView(View):
@@ -17,11 +18,13 @@ class SignUpView(View):
         form = self.form_class(request.POST)
 
         if form.is_valid():
-            form.save()
+            user = form.save()
 
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}')
 
-            return redirect(to='/')
+            login(request, user)
+
+            return redirect('dashboard')
 
         return render(request, self.template_name, {'form': form})
