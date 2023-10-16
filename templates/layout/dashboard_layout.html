@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block layout %}
+    <div class="d-flex min-vh-100">
+        {% comment %} {% include "layout/header.html" %} {% endcomment %}
+        <div>{% include "layout/sidebar.html" %}</div>
+        <div class="flex-grow-1 m-3">
+            {% block content %}
+            {% endblock content %}
+            {% comment %} Bootstrap JS {% endcomment %}
+            <script src="{% static 'bootstrap_v_5_3_2/bootstrap.bundle.min.js' %}"></script>
+            {% include "layout/flash_messages.html" %}
+        </div>
+    </div>
+{% endblock layout %}
