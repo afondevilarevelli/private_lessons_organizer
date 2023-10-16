@@ -76,6 +76,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'private_lessons_organizer.wsgi.application'
 
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+    EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
