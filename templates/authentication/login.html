@@ -3,7 +3,7 @@
   Sign in
 {% endblock header_title %}
 {% block content %}
-  {% if form.errors %}<p>Your username and password didn't match. Please try again.</p>{% endif %}
+  {% include "components/form_errors.html" with form=form %}
   {% if next %}
     {% if user.is_authenticated %}
       <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
@@ -13,28 +13,34 @@
   {% endif %}
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    <table>
-      <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-      </tr>
-      <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-      </tr>
-    </table>
-    <input type="submit" value="login" />
+    <div class="row justify-content-center mt-2">
+      <div class="col-12 col-md-8 mb-3">
+        <div class="form-group text-start">
+          <label class="small mb-1">Username</label>
+          {{ form.username }}
+        </div>
+      </div>
+      <div class="col-12 col-md-8 mb-3">
+        <div class="form-group text-start">
+          <label class="small mb-1">Password</label>
+          {{ form.password }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group mt-1 mb-0">
+      <button type="submit" class="col-5 btn btn-light">Login</button>
+      <br>
+    </div>
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
-  {# Assumes you set up the password_reset view in your URLconf #}
-  <p>
+  <p class="mt-2 small">
     <a href="{% url 'password_reset' %}">Lost password?</a>
   </p>
 {% endblock content %}
 {% block card_footer %}
   <div class="card-footer text-center">
     <div class="small">
-      <a href="{% url 'password_reset' %}">Lost password?</a>
+      <a href="{% url 'signup' %}">Create account</a>
     </div>
   </div>
 {% endblock card_footer %}

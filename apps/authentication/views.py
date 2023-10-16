@@ -1,13 +1,11 @@
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login
 from django.views import View
 from django.contrib import messages
-from apps.authentication.forms import RegisterForm
+from apps.authentication.forms.signup_form import SignUpForm
 
 
 class SignUpView(View):
-    form_class = RegisterForm
+    form_class = SignUpForm
     initial = {'key': 'value'}
     template_name = 'authentication/signup.html'
 
