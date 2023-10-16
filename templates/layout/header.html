@@ -1,11 +1,9 @@
 {% load static %}
-
 <style>
     .dropdown-toggle::after {
         display: none;
     }
 </style>
-
 <div class="border-bottom">
     <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-1">
@@ -16,25 +14,35 @@
                 </a>
                 <div class="fs-4">LessonsORG</div>
             </div>
-
             <div class="col-md-3 text-end">
                 {% if user.is_authenticated %}
-                <div class="dropdown" id="avatar">
-                    <div class="d-flex gap-3 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{% static 'images/astronaut.jpg' %}" alt="Logo" height="45" width="45" class="rounded-circle" />
-                        <div class="d-flex flex-column align-items-start">
-                            <div class="fw-semibold">{{ user.username }}</div>
-                            <div class="fw-light">{{ user.email }}</div>
+                    <div class="dropdown" id="avatar">
+                        <div class="d-flex gap-3 dropdown-toggle"
+                             type="button"
+                             data-bs-toggle="dropdown"
+                             aria-expanded="false">
+                            <img src="{% static 'images/astronaut.jpg' %}"
+                                 alt="Logo"
+                                 height="45"
+                                 width="45"
+                                 class="rounded-circle" />
+                            <div class="d-flex flex-column align-items-start">
+                                <div class="fw-semibold">{{ user.username }}</div>
+                                <div class="fw-light">{{ user.email }}</div>
+                            </div>
                         </div>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'home' %}">Profile</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{% url 'home' %}">Profile</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-                    </ul>
-                  </div>
-
-                
                 {% else %}
                     <a class="btn btn-outline-primary me-2" href="{% url 'login' %}">Login</a>
                     <a class="btn btn-primary" href="{% url 'signup' %}">Sign-up</a>

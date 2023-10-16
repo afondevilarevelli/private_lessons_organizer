@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
   <head>
@@ -11,28 +10,16 @@
         Lessons ORG
       {% endblock title %}
     </title>
-
     {% comment %} Bootstrap CSS {% endcomment %}
-    <link href="{% static 'bootstrap_v_5_3_2/bootstrap.min.css' %}" rel="stylesheet">
-
-    {% block styles %}{% endblock styles %}
+    <link href="{% static 'bootstrap_v_5_3_2/bootstrap.min.css' %}"
+          rel="stylesheet">
+    {% block styles %}
+    {% endblock styles %}
   </head>
   <body>
-    <div class="d-flex flex-column min-vh-100">
-      {% include "layout/header.html" %}
-
-      <div class="flex-grow-1 m-3">
-        {% block content %}{% endblock content %}
-
-        {% comment %} Bootstrap JS {% endcomment %}
-      <script src="{% static 'bootstrap_v_5_3_2/bootstrap.bundle.min.js' %}"></script>
-      {% include "layout/flash_messages.html" %}
-      </div>
-    </div>
-
-    
-
-    {% block scripts %}{% endblock scripts %}
-    
+    {% block layout %}
+    {% endblock layout %}
+    {% block scripts %}
+    {% endblock scripts %}
   </body>
 </html>
