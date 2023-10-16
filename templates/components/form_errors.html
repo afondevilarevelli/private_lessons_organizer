@@ -1,0 +1,16 @@
+{% load bootstrap_icons %}
+<style>
+    #form-errors-list ul {
+        list-style-type: none;
+    }
+</style>
+{% if form.errors %}
+    <ul class="list-group text-start" id="form-errors-list">
+        {% for key, value in form.errors.items %}
+            <li class="list-group-item list-group-item-danger d-flex gap-0">
+                {% bs_icon 'x-circle' size='1.3em' %}
+                <div class="mr-1">{{ value }}</div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

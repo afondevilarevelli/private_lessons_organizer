@@ -1,4 +1,7 @@
 {% extends "layout/auth_layout.html" %}
+{% block header_title %}
+  Sign in
+{% endblock header_title %}
 {% block content %}
   {% if form.errors %}<p>Your username and password didn't match. Please try again.</p>{% endif %}
   {% if next %}
@@ -28,3 +31,10 @@
     <a href="{% url 'password_reset' %}">Lost password?</a>
   </p>
 {% endblock content %}
+{% block card_footer %}
+  <div class="card-footer text-center">
+    <div class="small">
+      <a href="{% url 'password_reset' %}">Lost password?</a>
+    </div>
+  </div>
+{% endblock card_footer %}
