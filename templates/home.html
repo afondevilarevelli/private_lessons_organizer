@@ -1,4 +1,88 @@
 {% extends "layout/base_layout.html" %}
+{% load static %}
+{% load bootstrap_icons %}
 {% block content %}
-    <button type="button" class="btn btn-primary">Primary</button>
+    <div class="container my-5">
+        <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+            <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+                <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Organize yourself in the most efficient way!</h1>
+                <p class="lead">
+                    Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
+                </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                    <a role="button"
+                       class="btn btn-primary btn-lg px-4 me-md-2 fw-bold"
+                       href="{% url 'signup' %}">Get started</a>
+                    <a role="button"
+                       class="btn btn-outline-secondary btn-lg px-4"
+                       href="{% url 'login' %}">Already in</a>
+                </div>
+            </div>
+            <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+                <img class="rounded-lg-3" src="{% static "images/hero_image.png" %}" alt="Hero" width="720" height="auto">
+            </div>
+        </div>
+    </div>
+    <div class="b-example-divider"></div>
+    <div class="container px-4 py-5" id="icon-grid">
+        <h2 class="pb-2 border-bottom">What can you do?</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+            <div class="col d-flex align-items-start">
+                {% bs_icon 'backpack' size='1.5em' extra_classes='bi text-body-secondary flex-shrink-0 me-3' %}
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Manage students</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                {% bs_icon 'journal-text' size='1.5em' extra_classes='bi text-body-secondary flex-shrink-0 me-3' %}
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Manage lessons</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                {% bs_icon 'card-checklist' size='1.5em' extra_classes='bi text-body-secondary flex-shrink-0 me-3' %}
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Homework</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                {% bs_icon 'calendar-week' size='1.5em' extra_classes='bi text-body-secondary flex-shrink-0 me-3' %}
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Organize all lessons</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                {% bs_icon 'graph-up-arrow' size='1.5em' extra_classes='bi text-body-secondary flex-shrink-0 me-3' %}
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">See reports</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                {% bs_icon 'coin' size='1.5em' extra_classes='bi text-body-secondary flex-shrink-0 me-3' %}
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Set your pricing</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                {% bs_icon 'bell' size='1.5em' extra_classes='bi text-body-secondary flex-shrink-0 me-3' %}
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Notifications</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                {% bs_icon 'align-end' size='1.5em' extra_classes='bi text-body-secondary flex-shrink-0 me-3' %}
+                <div>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Workload limits</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
