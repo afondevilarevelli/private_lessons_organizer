@@ -1,0 +1,13 @@
+{% extends "components/modal.html" %}
+{% block modal_id %}
+    "EditStudent{{ student.id }}"
+{% endblock modal_id %}
+{% block modal_title %}
+    Edit {{ student.full_name }}
+{% endblock modal_title %}
+{% block modal_body %}
+    BODY EDIT
+{% endblock modal_body %}
+{% block modal_footer %}
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+{% endblock modal_footer %}

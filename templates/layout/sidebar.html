@@ -1,7 +1,7 @@
 {% load static %}
 {% load bootstrap_icons %}
 {% with request.resolver_match.url_name as url_name %}
-    <div class="d-flex flex-column flex-shrink-0 p-3 h-100 border-end"
+    <div class="d-flex flex-column flex-shrink-0 p-3 h-100 max-vh-100 border-end"
          style="width: 280px">
         <a href="{% url 'dashboard' %}"
            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -18,15 +18,15 @@
                 </a>
             </li>
             <li>
-                <a href="{% url 'students' %}"
-                   class="nav-link text-white {% if url_name == 'students' %}active{% endif %}">
+                <a href="{% url 'students_list' %}"
+                   class="nav-link text-white {% if url_name == 'students_list' %}active{% endif %}">
                     {% bs_icon 'mortarboard' size='1.3em' extra_classes='bi pe-none me-2' %}
                     Students
                 </a>
             </li>
             <li>
-                <a href="{% url 'lessons' %}"
-                   class="nav-link text-white  {% if url_name == 'lessons' %}active{% endif %}">
+                <a href="{% url 'lessons_list' %}"
+                   class="nav-link text-white  {% if url_name == 'lessons_list' %}active{% endif %}">
                     {% bs_icon 'journal-text' size='1.3em' extra_classes='bi pe-none me-2' %}
                     Lessons
                 </a>

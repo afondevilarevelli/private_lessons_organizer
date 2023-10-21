@@ -1,7 +1,36 @@
 {% extends "layout/dashboard_layout.html" %}
+{% load bootstrap_icons %}
 {% block title %}
     Students
 {% endblock title %}
 {% block content %}
-    Students
+    <h3 class="mb-5">Students</h3>
+    <button type="button"
+            class="btn btn-primary mb-3"
+            data-bs-toggle="modal"
+            data-bs-target="#CreateStudentModal">{% bs_icon 'plus' size='1.3em' extra_classes='me-1' %}Create</button>
+    <div class="container">
+        <div class="row gy-4">
+            {% for student in students %}
+                <div class="col-12 col-md-6 col-xl-4 col-xxl-3">
+                    <div class="card" style="width: 16rem;">
+                        <img src="{{ student.image.url }}"
+                             class="object-fit-cover"
+                             alt="{{ student.first_name }}"
+                             width='100%'
+                             height='120px'>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ student.full_name }}</h5>
+                            <p class="card-text">{{ student.contact_email }}</p>
+                            <button class="btn btn-primary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#EditStudent{{ student.id }}">Go somewhere</button>
+                        </div>
+                    </div>
+                </div>
+                {% include "domain/students/components/edit_student_modal.html" %}
+            {% endfor %}
+        </div>
+    </div>
+    {% include "domain/students/components/create_student_modal.html" %}
 {% endblock content %}

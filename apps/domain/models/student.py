@@ -15,3 +15,7 @@ class Student(models.Model):
         upload_to=student_image_dir_path, null=True, blank=True)
 
     owner = models.ForeignKey('authentication.User', on_delete=models.CASCADE)
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
