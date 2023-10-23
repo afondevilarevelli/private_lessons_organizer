@@ -1,8 +1,7 @@
 {% load static %}
 {% load bootstrap_icons %}
 {% with request.resolver_match.url_name as url_name %}
-    <div class="d-flex flex-column flex-shrink-0 p-3 h-100 max-vh-100 border-end"
-         style="width: 280px">
+    <div class="d-flex flex-column flex-shrink-0 p-3 h-100">
         <a href="{% url 'dashboard' %}"
            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             {% include "components/logo.html" %}

@@ -1,0 +1,22 @@
+{% load bootstrap_icons %}
+{% with request.resolver_match.url_name as url_name %}
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="d-flex gap-3">
+                <button class="btn btn-secondary d-block d-lg-none"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasForSidebar"
+                        aria-controls="offcanvasForSidebar">{% bs_icon 'list' size='1.3em' %}</button>
+                <button class="btn btn-secondary d-none d-lg-block"
+                        type="button"
+                        id="sidebarResponsiveTooglerButton">{% bs_icon 'list' size='1.3em' %}</button>
+                <a class="navbar-brand" href="#">
+                    {% if url_name == 'students_list' %}Students{% endif %}
+                    {% if url_name == 'lessons_list' %}Lessons{% endif %}
+                </a>
+            </div>
+        </button>
+    </div>
+</nav>
+{% endwith %}

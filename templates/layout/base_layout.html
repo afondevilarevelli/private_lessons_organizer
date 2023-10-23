@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block layout %}
-    <div class="d-flex flex-column min-vh-100">
+    <div class="d-flex flex-column">
         {% include "layout/header.html" %}
-        <div class="flex-grow-1 m-3">
+        <div class="flex-grow-1 m-3 min-vh-100">
             {% block content %}
             {% endblock content %}
             {% comment %} Bootstrap JS {% endcomment %}
