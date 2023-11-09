@@ -13,7 +13,7 @@
             {% for student in students %}
                 <div class="col-12 col-md-6 col-xl-4 col-xxl-3">
                     <div class="card" style="width: 16rem;">
-                        <img src="{{ student.image.url }}"
+                        <img src="{% if student.image %}{{ student.image.url }}{% else %}{{ "default" }}{% endif %}"
                              class="object-fit-cover"
                              alt="{{ student.first_name }}"
                              width='100%'

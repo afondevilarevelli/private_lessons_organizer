@@ -6,8 +6,12 @@
     Create Student
 {% endblock modal_title %}
 {% block modal_body %}
-    BODY CREATE
-{% endblock modal_body %}
-{% block modal_footer %}
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <form action="{% url "students_index" %}" method="post">
+        {% csrf_token %}
+        {{ student_form.as_table }}
+    {% endblock modal_body %}
+    {% block modal_footer %}
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
 {% endblock modal_footer %}

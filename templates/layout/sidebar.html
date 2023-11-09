@@ -17,15 +17,15 @@
                 </a>
             </li>
             <li>
-                <a href="{% url 'students_list' %}"
-                   class="nav-link text-white {% if url_name == 'students_list' %}active{% endif %}">
+                <a href="{% url 'students_index' %}"
+                   class="nav-link text-white {% if url_name == 'students_index' %}active{% endif %}">
                     {% bs_icon 'mortarboard' size='1.3em' extra_classes='bi pe-none me-2' %}
                     Students
                 </a>
             </li>
             <li>
-                <a href="{% url 'lessons_list' %}"
-                   class="nav-link text-white  {% if url_name == 'lessons_list' %}active{% endif %}">
+                <a href="{% url 'lessons_index' %}"
+                   class="nav-link text-white  {% if url_name == 'lessons_index' %}active{% endif %}">
                     {% bs_icon 'journal-text' size='1.3em' extra_classes='bi pe-none me-2' %}
                     Lessons
                 </a>
