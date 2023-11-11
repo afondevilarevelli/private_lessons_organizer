@@ -6,7 +6,9 @@
     Create Student
 {% endblock modal_title %}
 {% block modal_body %}
-    <form action="{% url "students_index" %}" method="post">
+    <form action="{% url "students_index" %}"
+          method="post"
+          enctype="multipart/form-data">
         {% csrf_token %}
         {{ student_form.as_table }}
     {% endblock modal_body %}

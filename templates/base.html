@@ -21,6 +21,9 @@
   <body>
     {% block layout %}
     {% endblock layout %}
+    {% comment %} Bootstrap JS {% endcomment %}
+    <script src="{% static 'bootstrap_v_5_3_2/bootstrap.bundle.min.js' %}"></script>
+    {% include "layout/flash_messages.html" %}
     {% block scripts %}
     {% endblock scripts %}
   </body>
