@@ -17,13 +17,15 @@
           rel="stylesheet">
     {% block styles %}
     {% endblock styles %}
+    <script src="{% static 'htmx.min.js' %}"></script>
   </head>
-  <body>
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     {% block layout %}
     {% endblock layout %}
     {% comment %} Bootstrap JS {% endcomment %}
     <script src="{% static 'bootstrap_v_5_3_2/bootstrap.bundle.min.js' %}"></script>
     {% include "layout/flash_messages.html" %}
+    {% include "components/confirmation_dialog.html" %}
     {% block scripts %}
     {% endblock scripts %}
   </body>

@@ -1,0 +1,19 @@
+{% extends "components/modal.html" %}
+{% block modal_id %}
+    {{ "FormStudentModal" }}
+{% endblock modal_id %}
+{% block modal_title %}
+    Create Student
+{% endblock modal_title %}
+{% block modal_body %}
+    <form action="{% url "students_index" %}"
+          method="post"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ student_form.as_table }}
+    {% endblock modal_body %}
+    {% block modal_footer %}
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+{% endblock modal_footer %}

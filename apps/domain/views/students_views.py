@@ -1,6 +1,6 @@
 from typing import Any
 from django.db.models.query import QuerySet
-from django.http import JsonResponse
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import ListView
 from apps.domain.forms.student_forms import StudentForm
@@ -11,7 +11,7 @@ from django.core.exceptions import PermissionDenied
 from apps.domain.permissions.student_permissions import has_student_permissions
 from django.contrib import messages
 from django.core.files.uploadedfile import UploadedFile
-
+from apps.domain.utils import get_htmx_flash_message_header
 
 class StudentsListView(LoginRequiredMixin, ListView):
     model = Student
@@ -66,5 +66,18 @@ class StudentsUpdateDestroy(LoginRequiredMixin, View):
 
         return redirect('students_index')
 
-    def delete(self, request):
-        pass
+    def delete(self, request, pk):
+        instance = get_object_or_404(Student, id=pk)
+
+        if not has_student_permissions(request.user, instance):
+            raise PermissionDenied()
+        
+        instance.delete()
+
+        return HttpResponse(
+            "", status=200, 
+            headers=get_htmx_flash_message_header(
+                f"Student '{instance.full_name}' deleted succesfully",
+                "success"
+            )
+        )

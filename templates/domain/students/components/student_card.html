@@ -1,0 +1,24 @@
+<div class="col-12 col-md-6 col-xl-4 col-xxl-3"
+     id="student-card-{{ student.id }}">
+    <div class="card" style="width: 16rem;">
+        <img src="{% if student.image %}{{ student.image.url }}{% else %}{{ "default" }}{% endif %}"
+             class="object-fit-cover"
+             alt="{{ student.first_name }}"
+             width='100%'
+             height='120px'>
+        <div class="card-body">
+            <h5 class="card-title">{{ student.full_name }}</h5>
+            <p class="card-text">{{ student.contact_email }}</p>
+            <button class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#EditStudent{{ student.id }}">Go somewhere</button>
+            <button type="button"
+                    class="btn btn-danger"
+                    hx-delete="{% url "students_object" student.id %}"
+                    hx-confirm="Delete '{{ student.full_name }}'?"
+                    hx-target="#student-card-{{ student.id }}"
+                    hx-swap="outerHTML">Delete</button>
+        </div>
+    </div>
+    {% include "domain/students/components/edit_student_modal.html" %}
+</div>
