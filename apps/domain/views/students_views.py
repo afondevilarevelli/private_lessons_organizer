@@ -40,7 +40,7 @@ class StudentsListView(LoginRequiredMixin, ListView):
             instance = form.save(commit=False)
             instance.owner = request.user
             instance.save()
-            messages.success(request, f"Student {instance.full_name} created")
+            messages.success(request, f"Student {instance.full_name} created succesfully")
         else:
             messages.error(request, "Invalid data")
 
@@ -60,7 +60,7 @@ class StudentsUpdateDestroy(LoginRequiredMixin, View):
             instance = form.save(commit=False)
             instance.owner = request.user
             instance.save()
-            messages.success(request, f"Student {instance.full_name} updated")
+            messages.success(request, f"Student {instance.full_name} updated succesfully")
         else:
             messages.error(request, "Invalid update")
 
